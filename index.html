@@ -2,41 +2,44 @@
 <html>
 
 <head>
-    <title>Email Sender</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <link rel="shortcut icon" type="image/png" href="http://pre11.deviantart.net/3944/th/pre/i/2012/122/6/9/cookie_monster_by_neorame-d4yb0b5.png" />
-    <!--Jquery-->
-    <script src="http://code.jquery.com/jquery-3.3.1.js"></script>
-    <!--Bootstrap 3.3.7-->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="shortcut icon" type="image/png" href="images/CM.png" />
+  <title>Email Form Promise</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <script src="http://code.jquery.com/jquery-3.3.1.js"></script>
 </head>
 
 <body>
-    <div class="main_container">
-        <div class="main_div">
-            <span id="title">Howdy,Pilgrim!</span>
-            <div id="modalContainer">Hello!</div>
-        </div>
+  <div class="flex-container">
+    <div class="row">
+      <div class="flex-item">
+        <form action="validate.php" method="post">
+          <div class="title">Please submit contact information</div>
+          <!-- name -->
+          <div class="inputGroup">
+            <label for="fullname">Name:</label>
+            <input type="text" name="fullname" id="fullname"><br>
+          </div>
+          <!-- email -->
+          <div class="inputGroup">
+            <label for="email">email:</label>
+            <input type="text" name="email" id="email"><br>
+          </div>
+          <!-- phone -->
+          <div class="inputGroup">
+            <label for="phone">phone:</label>
+            <input type="text" id="phone" maxlength="12" placeholder="xxx-xxx-xxxx" size="12" /><br>
+          </div>
+          <!--  -->
+          <br>
+          <div id="submit-Btn">Submit</div>
+        </form>
+      </div>
     </div>
-
-    <script>
-        //set css/js links with random string for caching issues prevention
-        var csshref = 'css.css';
-        var jshref = 'js.js';
-        var date = new Date().getTime();
-        $('<link>', {
-            rel: "stylesheet",
-            type: "text/css",
-            href: csshref + "?" + date,
-        }).appendTo($('head'));
-        $('<script>', {
-            src: jshref + '?' + date,
-        }).appendTo($('body'));
-    </script>
-
-    <body>
+  </div>
+  <script src="main.js"></script>
+</body>
 
 </html>
