@@ -3,6 +3,9 @@
     .inputGroup label {
         display: block;
     }
+    .flex-item {
+        width: 40vw!important;
+    }
 }
 
 html,

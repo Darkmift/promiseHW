@@ -25,35 +25,31 @@ formObj.email
 
 formObj.self.submit(function(e) {
     e.preventDefault();
+    //clear previous errors;
+    alertContainer.empty();
     cl('clicked!');
     var errMsgGroup = $('<ol>');
     formObj.self
         .find("input")
         .each(
             (index, element) => {
-                var self = $(element);
-                cl('value: ', self.val());
-                errMsgGroup
-                    .append(
-                        $('<li>')
-                        .text(!self.val() ? String(self.attr('name')) + " must not be empty" :
-                            String(index)
-                        )
-                    );
-
-
-                switch (self.attr('name')) {
-                    case 'fullname':
-                        cl('1', self.val())
-                        break;
-                    case 'email':
-                        cl('2', self.val())
-                        break;
-                    case 'phone':
-                        cl('3', self.val())
-                        break;
+                var self = $(element)[0];
+                cl('value: ', self);
+                if (!self.value) {
+                    errMsgGroup
+                        .append(
+                            $('<li>')
+                            .text(String(self.name) + " must not be empty")
+                        );
                 }
-
+                if (!isEmail(self.value) &&
+                    self.name === 'email'
+                ) {
+                    cl('el: ', self.name, 'val: ', self.value)
+                    errMsgGroup
+                        .append($('<li>')
+                            .text(String(self.name) + " is not a valid email address"));
+                }
             }
         )
     errMsgGroup.appendTo(alertContainer);
